@@ -12,6 +12,15 @@ namespace DoNotShorShutdown
 {
     public partial class Form1 : Form
     {
+        protected override void WndProc(ref Message m)//перехват события винды, любого 
+        {
+            if (m.Msg==0x11)//определяем по идендификатору что за событие 
+            {
+                MessageBox.Show("НЕХОРОШО");//ну и что-то делаем
+            }
+            base.WndProc(ref m);    
+        }
+
         public Form1()
         {
             InitializeComponent();
