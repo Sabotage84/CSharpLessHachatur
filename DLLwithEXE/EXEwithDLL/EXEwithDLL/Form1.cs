@@ -1,4 +1,5 @@
-﻿using System;
+﻿using lib2;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,6 +21,11 @@ namespace EXEwithDLL
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            C.M();
         }
     }
 }
