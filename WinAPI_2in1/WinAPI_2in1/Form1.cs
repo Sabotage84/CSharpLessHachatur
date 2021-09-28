@@ -14,8 +14,6 @@ namespace WinAPI_2in1
     public partial class Form1 : Form
     {
 
-        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn(int nLeftRect, int nTopRect, int nRightRect, int nBottomRect, int nWidthEllipse, int nHeightEllipse);
 
         
 
@@ -36,10 +34,6 @@ namespace WinAPI_2in1
             
         }
 
-        private void button1_Paint_1(object sender, PaintEventArgs e)
-        {
-            IntPtr ptr = CreateRoundRectRgn(0, 0, button1.Width, button1.Height, 15, 15);
-            button1.Region = Region.FromHrgn(ptr);
-        }
+        
     }
 }
