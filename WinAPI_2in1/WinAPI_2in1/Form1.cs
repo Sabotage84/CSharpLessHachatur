@@ -14,14 +14,18 @@ namespace WinAPI_2in1
     public partial class Form1 : Form
     {
 
-        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
-        public static extern int MessageBox(IntPtr hWnd, String text, String caption, uint type);
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn(int nLeftRect, int nTopRect, int nRightRect, int nBottomRect, int nWidthEllipse, int nHeightEllipse);
 
-        void Main()
+        
+
+        private void button1_Paint(object sender, PaintEventArgs e)
         {
-            // Call the MessageBox function using platform invoke.
-            MessageBox(new IntPtr(0), "Hello World!", "Hello Dialog", 0);
+            
+           
         }
+
+
         public Form1()
         {
             InitializeComponent();
@@ -29,7 +33,13 @@ namespace WinAPI_2in1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Main();
+            
+        }
+
+        private void button1_Paint_1(object sender, PaintEventArgs e)
+        {
+            IntPtr ptr = CreateRoundRectRgn(0, 0, button1.Width, button1.Height, 15, 15);
+            button1.Region = Region.FromHrgn(ptr);
         }
     }
 }
